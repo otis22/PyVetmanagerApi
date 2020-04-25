@@ -18,3 +18,9 @@ catch  Exception as err:
 
 ```python -m unittest discover tests```
 
+##Publish
+
+```
+twine upload dist/* -r testpypi
+twine upload dist/*
+```
