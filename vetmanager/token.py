@@ -1,7 +1,7 @@
 import requests
 
 from vetmanager.domain import Domain
-#TODO: write https://stackoverflow.com/questions/15753390/how-can-i-mock-requests-and-the-response test
+#TODO: write https://stackoverflow.com/questions/15753390/how-can-i-mock-requests-and-the-response tests
 
 class Token:
     domain: Domain

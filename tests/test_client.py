@@ -17,7 +17,7 @@ class MockResponse:
 class TestClient(unittest.TestCase):
     @mock.patch('vetmanager.client.requests.post')
     def test_vetmanager_client_auth_success(self, mock):
-        domain = DomainTest('test')
+        domain = DomainTest('tests')
         client = VetmanagerClient('test_app', domain)
         mock.return_value = MockResponse({
             "status": 200,
@@ -32,7 +32,7 @@ class TestClient(unittest.TestCase):
         self.assertEqual(client.token('login', 'password'), 'test_token')
     @mock.patch('vetmanager.client.requests.post')
     def test_vetmanager_client_auth_wrong_password(self, mock):
-        domain = DomainTest('test')
+        domain = DomainTest('tests')
         client = VetmanagerClient('test_app', domain)
         mock.return_value = MockResponse({
             "status" : 401,
@@ -43,7 +43,7 @@ class TestClient(unittest.TestCase):
             client.token('login', 'password')
     @mock.patch('vetmanager.client.requests.post')
     def test_vetmanager_client_auth_execution_problem(self, mock):
-        domain = DomainTest('test')
+        domain = DomainTest('tests')
         client = VetmanagerClient('test_app', domain)
         mock.return_value = MockResponse({
             "status" : 500,

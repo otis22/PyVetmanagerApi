@@ -12,7 +12,7 @@ class DomainProd(Domain):
 
 
 class DomainTest(Domain):
-    server = '.test.kube-dev.vetmanager.cloud'
+    server = '.tests.kube-dev.vetmanager.cloud'
     def __init__(self, domain_name):
         self.domain_name = domain_name
 
