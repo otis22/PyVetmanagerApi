@@ -1,4 +1,4 @@
-# PyVetmanagerApi
+# py-vetmanager-api
 Python library for work with vetmanager api
 
 # Examples

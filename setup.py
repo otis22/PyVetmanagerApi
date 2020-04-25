@@ -1,7 +1,7 @@
 from setuptools import setup
 
 setup(
-    name='PyVetmanagerApi',
+    name='py-vetmanager-api',
     version='0.1.1',
     long_description=open('README.md').read(),
     long_description_content_type='text/markdown',
