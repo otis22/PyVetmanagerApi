@@ -13,7 +13,6 @@ class MockResponse:
         return self.json_data
 
 
-
 class TestClient(unittest.TestCase):
     @mock.patch('vetmanager.client.requests.post')
     def test_vetmanager_client_auth_success(self, mock):
@@ -30,6 +29,7 @@ class TestClient(unittest.TestCase):
             }
         }, 200)
         self.assertEqual(client.token('login', 'password'), 'test_token')
+
     @mock.patch('vetmanager.client.requests.post')
     def test_vetmanager_client_auth_wrong_password(self, mock):
         domain = DomainTest('tests')
@@ -41,6 +41,7 @@ class TestClient(unittest.TestCase):
         }, 401)
         with self.assertRaises(WrongAuthentificationException):
             client.token('login', 'password')
+
     @mock.patch('vetmanager.client.requests.post')
     def test_vetmanager_client_auth_execution_problem(self, mock):
         domain = DomainTest('tests')

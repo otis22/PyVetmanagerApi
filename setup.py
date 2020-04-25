@@ -4,10 +4,10 @@ setup(
     name='PyVetmanagerApi',
     version='0.1',
     packages=['tests', 'vetmanager'],
-    url='git@github.com:otis22/PyVetmanagerApi.git',
+    url='https://github.com/otis22/PyVetmanagerApi',
     license='MIT',
     author='otis',
     author_email='vromanichev24@gmail.com',
     description='Vetmanager Api for Python',
-    install_requires = ["requests"]
+    install_requires=["requests"]
 )
