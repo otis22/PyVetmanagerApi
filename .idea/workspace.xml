@@ -1,20 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="02b93366-6618-4444-bedb-e352835fac32" name="Default" comment="">
-      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/vcs.xml" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/test.py" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/test/__init__.py" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/test/test_auth.py" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/test/test_client.py" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/test/test_domain.py" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/vetmanager/__init__.py" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/vetmanager/auth.py" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/vetmanager/client.py" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/vetmanager/domain.py" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/vetmanager/token.py" />
-      <change beforePath="$PROJECT_DIR$/README.md" afterPath="$PROJECT_DIR$/README.md" />
-    </list>
+    <list default="true" id="02b93366-6618-4444-bedb-e352835fac32" name="Default" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -46,7 +33,7 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="test_client.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="test_client.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/test/test_client.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="656">
@@ -78,16 +65,6 @@
               <folding>
                 <element signature="e#0#15#0" expanded="true" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="__init__.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/test/__init__.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-              <folding />
             </state>
           </provider>
         </entry>
@@ -125,6 +102,16 @@
               <folding>
                 <element signature="e#0#40#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="requirements.txt" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/requirements.txt">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="0">
+              <caret line="0" column="8" lean-forward="false" selection-start-line="0" selection-start-column="8" selection-end-line="0" selection-end-column="8" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -533,14 +520,6 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/requirements" />
-    <entry file="file://$PROJECT_DIR$/requirements.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="8" lean-forward="false" selection-start-line="0" selection-start-column="8" selection-end-line="0" selection-end-column="8" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/test/url.py" />
     <entry file="file://$PROJECT_DIR$/vetmanager/__init__.py">
       <provider selected="true" editor-type-id="text-editor">
@@ -651,6 +630,14 @@
           <folding>
             <element signature="e#0#15#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/requirements.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="8" lean-forward="false" selection-start-line="0" selection-start-column="8" selection-end-line="0" selection-end-column="8" />
+          <folding />
         </state>
       </provider>
     </entry>
