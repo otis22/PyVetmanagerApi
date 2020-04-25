@@ -5,7 +5,7 @@ Python library for work with vetmanager api
 
 ```
 try:
-    domain = DomainTest('tests')
+    domain = DomainProd('tests')
     client = VetmanagerClient('test_app', domain)
 catch  Exception as err: 
     print(str(err))
