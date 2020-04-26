@@ -31,10 +31,10 @@ jobs:
         if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
     - name: Lint package with flake8
       run: |
-        flake8 vetmanager --exit-zero --count --show-source --statistics
+        flake8 vetmanager --count --show-source --statistics
     - name: Lint tests with flake8
       run: |
-        flake8 tests  --exit-zero --count --show-source --statistics
+        flake8 tests  --count --show-source --statistics
     - name: Test with pytest
       run: |
         pytest
