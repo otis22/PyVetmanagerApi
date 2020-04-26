@@ -8,7 +8,7 @@ class TestDomain(unittest.TestCase):
         domain = DomainProd('tests')
         self.assertEqual(
             domain.url(),
-            'https://tests1.vetmanager.ru'
+            'https://tests.vetmanager.ru'
         )
 
     def test_test_url(self):
