@@ -25,6 +25,7 @@ catch  Exception as err:
 ## For publish package
 
 ```
-twine upload dist/* -r testpypi
-twine upload dist/*
+python setup.py sdist
+twine upload --skip-existing dist/* -r testpypi
+twine upload --skip-existing dist/*
 ```
