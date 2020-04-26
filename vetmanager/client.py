@@ -27,7 +27,7 @@ class VetmanagerClient:
         }
         try:
             token_auth_url = self.domain.url() + '/token_auth.php'
-            response = requests.post(token_auth_url, data=request_data)
+            response =         requests.post(token_auth_url, data=request_data)
             response_json = response.json()
         except Exception:
             raise ExecutionException("Invalid response or server unavailable")

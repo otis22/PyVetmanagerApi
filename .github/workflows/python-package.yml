@@ -32,7 +32,7 @@ jobs:
     - name: Lint with flake8
       run: |
         flake8 vetmanager --exit-zero --count --show-source --statistics
-        flake8 testsgit  --exit-zero --count --show-source --statistics
+        flake8 tests  --exit-zero --count --show-source --statistics
     - name: Test with pytest
       run: |
         pytest
