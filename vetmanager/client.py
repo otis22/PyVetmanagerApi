@@ -1,16 +1,20 @@
 import requests
-
 from vetmanager.domain import Domain
+
 
 class WrongAuthentificationException(Exception):
     pass
 
+
 class ExecutionException(Exception):
     pass
 
+
 class VetmanagerClient:
+
     app_name: str
     domain: Domain
+
     def __init__(self, app_name: str, domain: Domain):
         self.app_name = app_name
         self.domain = domain
@@ -21,8 +25,9 @@ class VetmanagerClient:
             'password': password,
             'app_name': self.app_name
         }
-        try :
-            response = requests.post(self.domain.url() +  '/token_auth.php', data = request_data)
+        try:
+            token_auth_url = self.domain.url() + '/token_auth.php'
+            response = requests.post(token_auth_url, data=request_data)
             response_json = response.json()
         except Exception:
             raise ExecutionException("Invalid response or server unavailable")
@@ -32,5 +37,3 @@ class VetmanagerClient:
         if response.status_code == 500:
             raise ExecutionException(response_json['title'])
         return response_json['data']['token']
-
-

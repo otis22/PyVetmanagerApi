@@ -1,7 +1,8 @@
 import unittest
 from unittest import mock
 from vetmanager.domain import DomainTest
-from vetmanager.client import VetmanagerClient, ExecutionException, WrongAuthentificationException
+from vetmanager.client \
+    import VetmanagerClient, ExecutionException, WrongAuthentificationException
 
 
 class MockResponse:
@@ -35,9 +36,9 @@ class TestClient(unittest.TestCase):
         domain = DomainTest('tests')
         client = VetmanagerClient('test_app', domain)
         mock.return_value = MockResponse({
-            "status" : 401,
-            "title" :  "Wrong authentification.",
-            "detail" : "Error Message"
+            "status": 401,
+            "title":  "Wrong authentification.",
+            "detail": "Error Message"
         }, 401)
         with self.assertRaises(WrongAuthentificationException):
             client.token('login', 'password')
@@ -47,15 +48,13 @@ class TestClient(unittest.TestCase):
         domain = DomainTest('tests')
         client = VetmanagerClient('test_app', domain)
         mock.return_value = MockResponse({
-            "status" : 500,
-            "title" :  "Wrong authentification.",
-            "detail" : "Error Message"
+            "status": 500,
+            "title":  "Wrong authentification.",
+            "detail": "Error Message"
         }, 500)
         with self.assertRaises(ExecutionException):
             client.token('login', 'password')
 
+
 if __name__ == '__main__':
     unittest.main()
-
-
-
