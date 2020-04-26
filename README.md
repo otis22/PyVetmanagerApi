@@ -1,6 +1,6 @@
 # py-vetmanager-api
 
-[![Build Status](https://github.com/otis22/PyVetmanagerApi/workflows/Python%20package/badge.svg)]
+![Build Status](https://github.com/otis22/PyVetmanagerApi/workflows/Python%20package/badge.svg)
 
 Python library for work with vetmanager api
 
