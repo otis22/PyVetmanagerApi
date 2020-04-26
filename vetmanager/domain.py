@@ -9,7 +9,7 @@ class Domain:
 
 class DomainProd(Domain):
 
-    server = '.vetmanager2.ru'
+    server = '.vetmanager.ru'
 
     def __init__(self, domain_name):
         self.domain_name = domain_name
