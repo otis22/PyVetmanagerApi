@@ -1,6 +1,6 @@
 import unittest
 from unittest import mock
-from vetmanager.domain import DomainTest
+from vetmanager.domain import Domain
 from vetmanager.client \
     import VetmanagerClient, ExecutionException, WrongAuthentificationException
 
@@ -14,10 +14,16 @@ class MockResponse:
         return self.json_data
 
 
+class FakeDomain(Domain):
+
+    def url(self):
+        return 'https://tests.host.com'
+
+
 class TestClient(unittest.TestCase):
     @mock.patch('vetmanager.client.requests.post')
     def test_vetmanager_client_auth_success(self, mock):
-        domain = DomainTest('tests')
+        domain = FakeDomain()
         client = VetmanagerClient('test_app', domain)
         mock.return_value = MockResponse({
             "status": 200,
@@ -33,7 +39,7 @@ class TestClient(unittest.TestCase):
 
     @mock.patch('vetmanager.client.requests.post')
     def test_vetmanager_client_auth_wrong_password(self, mock):
-        domain = DomainTest('tests')
+        domain = FakeDomain()
         client = VetmanagerClient('test_app', domain)
         mock.return_value = MockResponse({
             "status": 401,
@@ -45,7 +51,7 @@ class TestClient(unittest.TestCase):
 
     @mock.patch('vetmanager.client.requests.post')
     def test_vetmanager_client_auth_execution_problem(self, mock):
-        domain = DomainTest('tests')
+        domain = FakeDomain()
         client = VetmanagerClient('test_app', domain)
         mock.return_value = MockResponse({
             "status": 500,
