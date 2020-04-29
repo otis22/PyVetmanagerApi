@@ -32,7 +32,8 @@ class DomainTest(Domain):
     def url(self):
         host = CachedHost(
             Host(
-                billing_url="https://billing-api-test.kube-dev.vetmanager.cloud/",
+                billing_url="https://billing-api-test"
+                            + ".kube-dev.vetmanager.cloud/",
                 domain=self.domain
             )
         )
