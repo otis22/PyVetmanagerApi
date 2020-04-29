@@ -5,16 +5,21 @@ from vetmanager.domain import DomainProd, DomainLocal,\
 
 
 class MockResponse:
+
     def __init__(self, json_data):
         self.json_data = json_data
 
     def json(self):
         return self.json_data
 
+
 class FakeHost(Host):
+
     increment = 0
+
     def __init__(self):
         pass
+
     def url(self):
         self.increment = self.increment + 1
         return 'url' + str(self.increment)
@@ -53,12 +58,14 @@ class TestDomain(unittest.TestCase):
         domain = DomainLocal('tests')
         self.assertEqual(domain.url(), 'http://tests.localhost:8080')
 
+
 class TestCachedHost(unittest.TestCase):
 
     def test_cached_host(self):
         host = CachedHost(FakeHost())
         self.assertEqual(host.url(), 'url1')
         self.assertEqual(host.url(), 'url1')
+
 
 if __name__ == '__main__':
     unittest.main()
