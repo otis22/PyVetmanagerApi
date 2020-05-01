@@ -33,4 +33,4 @@ def url(domain):
             domain=domain
         )
     )
-    return str(Url(HTTPS(), host))
+    return Url(HTTPS(), host)

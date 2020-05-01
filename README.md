@@ -7,10 +7,27 @@ Python library for work with vetmanager api
 # Examples
 
 ```
+# For get full url by domain name
+from vetmanager.domain import url
+
+full_url = url('mydomain')
+print(full_url)
+```
+
+```
+
+# For get auth token
+from vetmanager.domain import url
+from vetmanager.client import Token, TokenCredentials
 try:
     url = url('domain_name')
-    client = VetmanagerClient('test_app', url)
-    token = client.token('admin', 'mypassword')
+    credentials = TokenCredentials(
+        login='login',
+        password='password',
+        app_name='myapp'
+    )
+    token = CachedToken(Token(credentials=credentials, url=url))
+    print(token)
 catch  Exception as err: 
     print(str(err))
 ```
