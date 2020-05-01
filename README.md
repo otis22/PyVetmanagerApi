@@ -8,8 +8,8 @@ Python library for work with vetmanager api
 
 ```
 try:
-    api_url = url('domain_name')
-    client = VetmanagerClient('test_app', domain)
+    url = url('domain_name')
+    client = VetmanagerClient('test_app', url)
     token = client.token('admin', 'mypassword')
 catch  Exception as err: 
     print(str(err))
