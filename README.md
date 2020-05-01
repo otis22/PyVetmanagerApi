@@ -8,7 +8,7 @@ Python library for work with vetmanager api
 
 ```
 try:
-    domain = DomainProd('tests')
+    api_url = url('domain_name')
     client = VetmanagerClient('test_app', domain)
     token = client.token('admin', 'mypassword')
 catch  Exception as err: 
@@ -18,9 +18,15 @@ catch  Exception as err:
 
 # For contributor
 
+## Check codestyle
+
+```
+flake8 vetmanager --count --show-source --statistics && flake8 tests --count --show-source --statistics
+```
+
 ## Run tests
 
-```python -m unittest discover tests```
+```pytest --cov=vetmanager --cov-fail-under 90 tests/```
 
 ## For publish package
 

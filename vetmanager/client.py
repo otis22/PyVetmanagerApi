@@ -1,5 +1,5 @@
 import requests
-from vetmanager.domain import Domain
+from vetmanager.domain import UrlInterface
 
 
 class WrongAuthentificationException(Exception):
@@ -12,21 +12,21 @@ class ExecutionException(Exception):
 
 class VetmanagerClient:
 
-    app_name: str
-    domain: Domain
+    __app_name: str
+    __url: UrlInterface
 
-    def __init__(self, app_name: str, domain: Domain):
-        self.app_name = app_name
-        self.domain = domain
+    def __init__(self, app_name: str, url: UrlInterface):
+        self.__app_name = app_name
+        self.__url = url
 
     def token(self, login: str, password: str) -> str:
         request_data = {
             'login': login,
             'password': password,
-            'app_name': self.app_name
+            'app_name': self.__app_name
         }
         try:
-            token_auth_url = self.domain.url() + '/token_auth.php'
+            token_auth_url = str(self.__url) + '/token_auth.php'
             response = requests.post(token_auth_url, data=request_data)
             response_json = response.json()
         except Exception:
