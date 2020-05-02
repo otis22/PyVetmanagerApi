@@ -1,6 +1,6 @@
 import unittest
 from unittest import mock
-from vetmanager.url.host import Host, CachedHost, FakeHost
+from vetmanager.url.host import Host, FakeHost
 
 
 class MockResponse:
@@ -14,13 +14,12 @@ class MockResponse:
 
 class TestHost(unittest.TestCase):
 
-    def test_cached_host(self):
-        host = CachedHost(FakeHost())
-        self.assertEqual(str(host), 'host1')
-        self.assertEqual(str(host), 'host1')
+    def test_cached_property_host(self):
+        host = FakeHost()
+        self.assertEqual(str(host), 'host')
 
     @mock.patch('vetmanager.url.host.requests.get')
-    def test_host(self, mock):
+    def test_host_all_is_ok(self, mock):
         mock.return_value = MockResponse({
             "success": True,
             "host": ".testhost.test",
@@ -29,6 +28,16 @@ class TestHost(unittest.TestCase):
 
         host = Host(billing_url='test', domain='test')
         self.assertEqual(str(host), 'test.testhost.test')
+
+    @mock.patch('vetmanager.url.host.requests.get')
+    def test_host_all_is_ok(self, mock):
+        mock.return_value = MockResponse({
+            "success": False,
+            "message": 'some error message'
+        })
+        host = Host(billing_url='test', domain='test')
+        with self.assertRaises(Exception):
+            str(host)
 
 
 if __name__ == '__main__':

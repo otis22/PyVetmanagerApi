@@ -1,4 +1,5 @@
 import requests
+from vetmanager.decorators import only_once
 from interface import implements, Interface
 
 
@@ -15,6 +16,7 @@ class Host(implements(HostInterface)):
         self.billing_url = billing_url
         self.domain = domain
 
+    @only_once
     def __str__(self) -> str:
         token_auth_url = self.billing_url + '/host/' + self.domain
         response = requests.get(token_auth_url)
@@ -24,28 +26,7 @@ class Host(implements(HostInterface)):
         return response_json['url']
 
 
-class CachedHost(implements(HostInterface)):
-
-    __host: HostInterface
-    __url: str
-
-    def __init__(self, host: HostInterface):
-        self.__host = host
-        self.__url = None
-
-    def __str__(self):
-        if not self.__url:
-            self.__url = str(self.__host)
-        return self.__url
-
-
 class FakeHost(implements(HostInterface)):
 
-    increment = 0
-
-    def __init__(self):
-        pass
-
-    def __str__(self):
-        self.increment = self.increment + 1
-        return 'host' + str(self.increment)
+    def __str__(self) -> str:
+        return 'host'

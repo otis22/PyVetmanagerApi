@@ -1,6 +1,7 @@
 import requests
 from interface import implements, Interface
 from vetmanager.domain import UrlInterface
+from vetmanager.decorators import only_once
 
 
 class TokenCredentials:
@@ -28,6 +29,7 @@ class Token(implements(TokenInterface)):
         self.__credentials = credentials
         self.__url = url
 
+    @only_once
     def __str__(self) -> str:
         token_auth_url = str(self.__url) + '/token_auth.php'
         response = requests.post(token_auth_url, data=vars(self.__credentials))
@@ -40,31 +42,10 @@ class Token(implements(TokenInterface)):
         return response_json['data']['token']
 
 
-class CachedToken(implements(TokenInterface)):
-
-    __token: TokenInterface
-    __cache: str
-
-    def __init__(self, host: TokenInterface):
-        self.__host = host
-        self.__cache = None
-
-    def __str__(self):
-        if not self.__cache:
-            self.__cache = str(self.__host)
-        return self.__cache
-
-
 class FakeToken(implements(TokenInterface)):
 
-    increment = 0
-
-    def __init__(self):
-        pass
-
-    def __str__(self):
-        self.increment = self.increment + 1
-        return 'token' + str(self.increment)
+    def __str__(self) -> str:
+        return 'token'
 
 
 class WrongAuthenticationException(Exception):

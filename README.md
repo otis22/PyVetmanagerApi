@@ -28,13 +28,13 @@ print(full_url)
 from vetmanager.functions import url
 from vetmanager.client import Token, TokenCredentials
 try:
-    url = url('domain_name')
+    myurl = url('domain_name')
     credentials = TokenCredentials(
         login='login',
         password='password',
         app_name='myapp'
     )
-    token = CachedToken(Token(credentials=credentials, url=url))
+    token = Token(credentials=credentials, url=url)
     print(token)
 catch  Exception as err: 
     print(str(err))
@@ -52,7 +52,7 @@ flake8 vetmanager --count --show-source --statistics && flake8 tests --count --s
 ## Run tests
 
 ```pytest --cov=vetmanager --cov-fail-under 90 tests/```
-
+git 
 ## For publish package
 
 ```

@@ -3,7 +3,7 @@ from unittest import mock
 from vetmanager.domain import FakeUrl
 from vetmanager.client import \
     Token, TokenCredentials, WrongAuthenticationException, \
-    CachedToken, FakeToken
+    FakeToken
 
 
 class MockResponse:
@@ -73,9 +73,8 @@ class TestClient(unittest.TestCase):
             str(token)
 
     def test_cached_token(self):
-        cached = CachedToken(FakeToken())
-        self.assertEqual(str(cached), 'token1')
-        self.assertEqual(str(cached), 'token1')
+        fake = FakeToken()
+        self.assertEqual(str(fake), 'token')
 
 
 if __name__ == '__main__':

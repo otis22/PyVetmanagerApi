@@ -1,6 +1,7 @@
 from interface import implements, Interface
 from .url.protocol import ProtocolInterface
 from .url.host import HostInterface
+from .decorators import only_once
 
 
 class UrlInterface(Interface):
@@ -16,6 +17,7 @@ class Url(implements(UrlInterface)):
         self.__protocol = protocol
         self.__host = host
 
+    @only_once
     def __str__(self) -> str:
         return str(self.__protocol) + str(self.__host)
 
