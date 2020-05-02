@@ -30,7 +30,7 @@ class TestHost(unittest.TestCase):
         self.assertEqual(str(host), 'test.testhost.test')
 
     @mock.patch('vetmanager.url.host.requests.get')
-    def test_host_all_is_ok(self, mock):
+    def test_host_unsuccsess(self, mock):
         mock.return_value = MockResponse({
             "success": False,
             "message": 'some error message'
