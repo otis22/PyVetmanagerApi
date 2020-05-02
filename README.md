@@ -16,16 +16,16 @@ All CRM account has unique domain name, url address may be:
 
 ```
 # For get full url by domain name
-from vetmanager.domain import url
+from vetmanager.functions import url
 
-full_url = url('mydomain')
+myurl = url('mydomain')
 print(full_url)
 ```
 
 ```
 
 # For get auth token
-from vetmanager.domain import url
+from vetmanager.functions import url
 from vetmanager.client import Token, TokenCredentials
 try:
     url = url('domain_name')

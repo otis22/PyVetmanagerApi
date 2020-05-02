@@ -1,6 +1,6 @@
 from interface import implements, Interface
-from .url.protocol import ProtocolInterface, HTTPS
-from .url.host import HostInterface, Host, CachedHost
+from .url.protocol import ProtocolInterface
+from .url.host import HostInterface
 
 
 class UrlInterface(Interface):
@@ -24,13 +24,3 @@ class FakeUrl(implements(UrlInterface)):
 
     def __str__(self):
         return 'https://tests.host.com'
-
-
-def url(domain):
-    host = CachedHost(
-        Host(
-            billing_url="https://billing-api.vetmanager.cloud/",
-            domain=domain
-        )
-    )
-    return Url(HTTPS(), host)
