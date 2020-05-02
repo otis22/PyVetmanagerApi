@@ -52,7 +52,7 @@ flake8 vetmanager --count --show-source --statistics && flake8 tests --count --s
 ## Run tests
 
 ```pytest --cov=vetmanager --cov-fail-under 90 tests/```
-git 
+
 ## For publish package
 
 ```
