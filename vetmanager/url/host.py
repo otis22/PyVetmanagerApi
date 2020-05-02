@@ -1,5 +1,6 @@
 import requests
 from vetmanager.decorators import only_once
+from vetmanager.billing import BillingApiUrlInterface
 from interface import implements, Interface
 
 
@@ -9,10 +10,10 @@ class HostInterface(Interface):
 
 class Host(implements(HostInterface)):
 
-    billing_url: str
+    billing_url: BillingApiUrlInterface
     domain: str
 
-    def __init__(self, billing_url: str, domain: str):
+    def __init__(self, billing_url: BillingApiUrlInterface, domain: str):
         self.billing_url = billing_url
         self.domain = domain
 

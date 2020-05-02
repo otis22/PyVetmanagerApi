@@ -1,7 +1,7 @@
 import requests
 from interface import implements, Interface
-from vetmanager.domain import UrlInterface
-from vetmanager.decorators import only_once
+from .domain import UrlInterface
+from .decorators import only_once
 
 
 class TokenCredentials:

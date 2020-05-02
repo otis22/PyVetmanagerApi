@@ -1,11 +1,12 @@
-from vetmanager.domain import UrlInterface, Url
-from vetmanager.url.host import Host
-from vetmanager.url.protocol import HTTPS
+from .domain import UrlInterface, Url
+from .url.host import Host
+from .url.protocol import HTTPS
+from .billing import BillingApiUrlProduction
 
 
 def url(domain) -> UrlInterface:
 
     return Url(HTTPS(), Host(
-            billing_url="https://billing-api.vetmanager.cloud/",
+            billing_url=BillingApiUrlProduction(),
             domain=domain
         ))
