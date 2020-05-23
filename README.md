@@ -4,7 +4,7 @@
 
 Python library for work with vetmanager api
 
-![Vetmanager](https://vetmanager.ru) - CRM for veterinary business. 
+[Vetmanager](https://vetmanager.ru) - CRM for veterinary business. 
 
 All CRM account has unique domain name, url address may be:
 

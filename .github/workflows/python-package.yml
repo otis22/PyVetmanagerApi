@@ -29,12 +29,9 @@ jobs:
         python -m pip install --upgrade pip
         pip install flake8 pytest pytest-cov
         if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
-    - name: Lint package with flake8
+    - name: Check code style with flake8
       run: |
-        flake8 vetmanager --count --show-source --statistics
-    - name: Lint tests with flake8
-      run: |
-        flake8 tests  --count --show-source --statistics
+        flake8 --count --show-source --statistics vetmanager tests
     - name: Test with pytest
       run: |
         pytest --cov=vetmanager --cov-fail-under 90 tests/
