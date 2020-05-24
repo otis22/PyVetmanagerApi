@@ -3,26 +3,29 @@ import requests
 
 class Domain:
 
-    domain: str
+    __domain: str
 
     def __init__(self, domain: str):
-        self.domain = domain
+        self.__domain = domain
 
     def __str__(self) -> str:
-        return self.domain
+        return self.__domain
+
+    def __add__(self, other) -> str:
+        return str(self) + other
 
 
 class HostGatewayUrl:
 
-    url: str
-    domain: Domain
+    __url: str
+    __domain: Domain
 
     def __init__(self, url: str, domain: Domain):
-        self.url = url
-        self.domain = domain
+        self.__url = url
+        self.__domain = domain
 
     def __str__(self) -> str:
-        return self.url + '/host/' + str(self.domain)
+        return self.__url + '/host/' + str(self.__domain)
 
 
 class HostName:
@@ -41,21 +44,30 @@ class FakeHost(HostName):
     def __str__(self) -> str:
         return 'fake.host'
 
+    def __add__(self, other) -> str:
+        return str(self) + other
+
 
 class HostNameFromHostGateway(HostName):
 
-    host_gateway_url: HostGatewayUrl
+    __host_gateway_url: HostGatewayUrl
 
     def __init__(self, host_gateway_url: HostGatewayUrl):
-        self.host_gateway_url = host_gateway_url
+        self.__host_gateway_url = host_gateway_url
+
+    def __invalid_response(self, response_json):
+        return 'success' not in response_json \
+            or 'url' not in response_json \
+            or response_json['success'] is False
 
     def __str__(self) -> str:
-        response = requests.get(str(self.host_gateway_url))
+        response = requests.get(str(self.__host_gateway_url))
         response_json = response.json()
-        if 'success' not in response_json and 'url' not in response_json:
+        if self.__invalid_response(response_json):
             raise Exception(
                 'Invalid response from Host Gateway : {}'.format(response.text)
             )
-        if response_json['success'] is False:
-            raise Exception("Domain is not exist")
         return response_json['url']
+
+    def __add__(self, other) -> str:
+        return str(self) + other

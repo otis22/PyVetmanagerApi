@@ -3,23 +3,33 @@ from .host import HostName
 
 class Protocol:
 
-    protocol: str
+    __protocol: str
 
     def __init__(self, protocol: str):
-        self.protocol = protocol
+        self.__protocol = protocol
 
     def __str__(self) -> str:
-        return self.protocol + '://'
+        return self.__protocol + '://'
+
+    def __add__(self, other) -> str:
+        return str(self) + other
 
 
 class Url:
 
-    protocol: Protocol
-    host_name: HostName
+    __protocol: Protocol
+    __host_name: HostName
+    __url: str
 
     def __init__(self, protocol: Protocol, host_name: HostName):
-        self.protocol = protocol
-        self.host_name = host_name
+        self.__protocol = protocol
+        self.__host_name = host_name
+        self.__url = None
 
     def __str__(self):
-        return str(self.protocol) + str(self.host_name)
+        if self.__url is None:
+            self.__url = self.__protocol + str(self.__host_name)
+        return self.__url
+
+    def __add__(self, other) -> str:
+        return str(self) + other

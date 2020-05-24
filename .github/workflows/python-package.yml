@@ -32,6 +32,6 @@ jobs:
     - name: Check code style with flake8
       run: |
         flake8 --count --show-source --statistics vetmanager tests
-    - name: Test with pytest
+    - name: Tests with check coverage
       run: |
         pytest --cov=vetmanager --cov-fail-under 90 tests/

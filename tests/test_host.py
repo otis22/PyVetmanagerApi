@@ -2,15 +2,7 @@ import unittest
 from unittest import mock
 from vetmanager.host import Domain, HostGatewayUrl
 from vetmanager.host import HostName, FakeHost, HostNameFromHostGateway
-
-
-class MockResponse:
-
-    def __init__(self, json_data):
-        self.json_data = json_data
-
-    def json(self):
-        return self.json_data
+from .mock import MockResponse
 
 
 class HostTestCase(unittest.TestCase):
