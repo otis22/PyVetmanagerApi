@@ -1,6 +1,6 @@
 import unittest
 from unittest import mock
-from vetmanager.host import Domain, HostGatewayUrl
+from vetmanager.host import Domain, HostGatewayUrl, BillingApiUrl
 from vetmanager.host import HostName, FakeHost, HostNameFromHostGateway
 from .mock import MockResponse
 
@@ -15,8 +15,21 @@ class HostTestCase(unittest.TestCase):
             'test'
         )
 
+    def test_billing_api_url(self):
+        self.assertEqual(
+            str(
+                BillingApiUrl('http://some.test')
+            ),
+            'http://some.test'
+        )
+
     def test_host_gateway_url(self):
-        gateway_url = str(HostGatewayUrl("http://test.url", Domain('test')))
+        gateway_url = str(
+            HostGatewayUrl(
+                BillingApiUrl("http://test.url"),
+                Domain('test')
+            )
+        )
         self.assertTrue(
             "http://test.url" in gateway_url
         )

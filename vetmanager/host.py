@@ -15,12 +15,26 @@ class Domain:
         return str(self) + other
 
 
-class HostGatewayUrl:
+class BillingApiUrl:
 
     __url: str
+
+    def __init__(self, url: str):
+        self.__url = url
+
+    def __str__(self) -> str:
+        return self.__url
+
+    def __add__(self, other) -> str:
+        return str(self) + other
+
+
+class HostGatewayUrl:
+
+    __url: BillingApiUrl
     __domain: Domain
 
-    def __init__(self, url: str, domain: Domain):
+    def __init__(self, url: BillingApiUrl, domain: Domain):
         self.__url = url
         self.__domain = domain
 
@@ -51,23 +65,25 @@ class FakeHost(HostName):
 class HostNameFromHostGateway(HostName):
 
     __host_gateway_url: HostGatewayUrl
+    __response_json = None
 
     def __init__(self, host_gateway_url: HostGatewayUrl):
         self.__host_gateway_url = host_gateway_url
 
-    def __invalid_response(self, response_json):
-        return 'success' not in response_json \
-            or 'url' not in response_json \
-            or response_json['success'] is False
+    def __invalid_response(self):
+        return 'success' not in self.response_json \
+            or 'url' not in self.response_json \
+            or self.response_json['success'] is False
 
     def __str__(self) -> str:
-        response = requests.get(str(self.__host_gateway_url))
-        response_json = response.json()
-        if self.__invalid_response(response_json):
+        if self.__response_json is None:
+            response = requests.get(str(self.__host_gateway_url))
+            self.response_json = response.json()
+        if self.__invalid_response():
             raise Exception(
                 'Invalid response from Host Gateway : {}'.format(response.text)
             )
-        return response_json['url']
+        return self.response_json['url']
 
     def __add__(self, other) -> str:
         return str(self) + other
