@@ -11,15 +11,23 @@ class TestFunctions(unittest.TestCase):
 
     def test_credentials(self):
         self.assertEqual(
-            token_credentials('test', 'test', 'test').__class__.__name__,
+            token_credentials(
+                login='test',
+                password='test',
+                app_name='test'
+            ).__class__.__name__,
             'Credentials'
         )
 
     def test_token(self):
         self.assertEqual(
             token(
-                url('domain'),
-                token_credentials('test', 'test', 'test')
+                url(domain='domain'),
+                token_credentials(
+                    login='test',
+                    password='test',
+                    app_name='test'
+                )
             ).__class__.__name__,
             'Token'
         )

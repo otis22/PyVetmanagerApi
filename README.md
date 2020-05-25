@@ -18,28 +18,62 @@ All CRM account has unique domain name, url address may be:
 # For get full url by domain name
 from vetmanager.functions import url
 
-myurl = url('mydomain')
-print(full_url)
+clinic_url = url('mydomain')
+print(clinic_url)
 ```
 
 ```
 
 # For get auth token
-from vetmanager.functions import url
-from vetmanager.client import Token, TokenCredentials
+from vetmanager.functions import url, token, token_credentials
+
 try:
-    myurl = url('domain_name')
-    credentials = TokenCredentials(
-        login='login',
-        password='password',
-        app_name='myapp'
+    user_token = token(
+        url(domain='domain'),
+        token_credentials(
+            login='test',
+            password='test',
+            app_name='test'
+        )
     )
-    token = Token(credentials=credentials, url=url)
-    print(token)
-catch  Exception as err: 
-    print(str(err))
+    print(user_token)
+except Exception as err: 
+    print(err)
 ```
 
+```
+#For work with dev enviroments
+
+from .url import Url, Protocol
+from .host import HostGatewayUrl, BillingApiUrl
+from .host import HostNameFromHostGateway, Domain
+from .token import Token, Credentials
+from .token import Login, Password, AppName
+
+try: 
+    clinic_url = Url(
+        Protocol('https'),
+        HostNameFromHostGateway(
+            HostGatewayUrl(
+                BillingApiUrl("https://billing-api-test.kube-dev.vetmanager.cloud/"),
+                Domain(domain)
+            )
+        )
+    )
+    
+    credentials = Credentials(
+        Login('login'),
+        Password('password'),
+        AppName('app_name')
+    )
+    
+    token_url = Token(
+        clinic_url,
+        credentials
+    )
+except Exception as e:
+    print(e)
+```
 
 # For contributor
 
