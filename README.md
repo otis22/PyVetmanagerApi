@@ -6,10 +6,11 @@ Python library for work with vetmanager api
 
 [Vetmanager](https://vetmanager.ru) - CRM for veterinary business. 
 
-All CRM account has unique domain name, url address may be:
+All CRM account has unique domain name, url address can changes:
 
 * {$domainName}.vetmanager.ru
-* {$domainName}.vetmanager.cloud
+* {$domainName}.vetmanager2.ru
+* {$domainName}.ru.vetmanager.cloud
 * git s...
 
 # Examples
@@ -44,20 +45,16 @@ except Exception as err:
 ```
 #For work with dev enviroments
 
-from .url import Url, Protocol
-from .host import HostGatewayUrl, BillingApiUrl
-from .host import HostNameFromHostGateway, Domain
-from .token import Token, Credentials
-from .token import Login, Password, AppName
+from vetmanager.url import UrlFromGateway, HostGatewayUrl, BillingApiUrl,\
+        Domain
+from vetmanager.token import Token, Credentials
+from vetmanager.token import Login, Password, AppName
 
 try: 
-    clinic_url = Url(
-        Protocol('https'),
-        HostNameFromHostGateway(
-            HostGatewayUrl(
-                BillingApiUrl("https://billing-api-test.kube-dev.vetmanager.cloud/"),
-                Domain(domain)
-            )
+    clinic_url = UrlFromGateway(
+        HostGatewayUrl(
+            BillingApiUrl("https://billing-api-test.kube-dev.vetmanager.cloud/"),
+            Domain(domain)
         )
     )
     
@@ -77,15 +74,18 @@ except Exception as e:
 
 # For contributor
 
-## Check codestyle
+## Install test requirements 
 
 ```
-flake8 vetmanager --count --show-source --statistics && flake8 tests --count --show-source --statistics
+pip install flake8 pytest pytest-cov
 ```
 
-## Run tests
-
-```pytest --cov=vetmanager --cov-fail-under 90 tests/```
+## Run check
+```
+flake8 --count --show-source --statistics vetmanager tests
+pytest --cov=vetmanager --cov-fail-under 90 tests/
+```
+or with pipenv `pipenv run check`
 
 ## For publish package
 
