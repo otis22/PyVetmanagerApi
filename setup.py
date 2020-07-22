@@ -2,7 +2,7 @@ from setuptools import setup
 
 setup(
     name='py-vetmanager-api',
-    version='0.1.5',
+    version='0.2.1',
     long_description=open('README.md').read(),
     long_description_content_type='text/markdown',
     packages=['tests', 'vetmanager'],
