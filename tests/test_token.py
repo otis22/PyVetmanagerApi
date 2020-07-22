@@ -2,8 +2,7 @@ import unittest
 from unittest import mock
 from vetmanager.token import Login, Password, AppName, Credentials
 from vetmanager.token import Token
-from vetmanager.url import Url, Protocol
-from vetmanager.host import FakeHost
+from vetmanager.url import FakeUrl
 from .mock import MockResponse
 
 
@@ -58,10 +57,7 @@ class TokenTest(unittest.TestCase):
         self.assertEqual(
             str(
                 Token(
-                    Url(
-                        Protocol('http'),
-                        FakeHost()
-                    ),
+                    FakeUrl(),
                     Credentials(
                         Login('login'),
                         Password('password'),
@@ -83,10 +79,7 @@ class TokenTest(unittest.TestCase):
         with self.assertRaises(Exception):
             str(
                 Token(
-                    Url(
-                        Protocol('http'),
-                        FakeHost()
-                    ),
+                    FakeUrl(),
                     Credentials(
                         Login('login'),
                         Password('password'),

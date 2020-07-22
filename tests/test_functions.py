@@ -1,35 +1,40 @@
 import unittest
+from vetmanager.url import Url, FakeUrl
+from vetmanager.token import Credentials, Token
 from vetmanager.functions import url, token_credentials, token
 
 
 class TestFunctions(unittest.TestCase):
     def test_url(self):
-        self.assertEqual(
-            url('test').__class__.__name__,
-            'Url'
+        self.assertTrue(
+            isinstance(url('test'), Url)
         )
 
     def test_credentials(self):
-        self.assertEqual(
-            token_credentials(
-                login='test',
-                password='test',
-                app_name='test'
-            ).__class__.__name__,
-            'Credentials'
-        )
-
-    def test_token(self):
-        self.assertEqual(
-            token(
-                url(domain='domain'),
+        self.assertTrue(
+            isinstance(
                 token_credentials(
                     login='test',
                     password='test',
                     app_name='test'
-                )
-            ).__class__.__name__,
-            'Token'
+                ),
+                Credentials
+            )
+        )
+
+    def test_token(self):
+        self.assertTrue(
+            isinstance(
+                token(
+                    FakeUrl(),
+                    token_credentials(
+                        login='test',
+                        password='test',
+                        app_name='test'
+                    )
+                ),
+                Token
+            )
         )
 
 

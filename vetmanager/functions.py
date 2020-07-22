@@ -1,18 +1,14 @@
-from .url import Url, Protocol
-from .host import HostGatewayUrl, BillingApiUrl
-from .host import HostNameFromHostGateway, Domain
+from vetmanager.url import Url, UrlFromGateway, \
+    HostGatewayUrl, BillingApiUrl, Domain
 from .token import Token, Credentials
 from .token import Login, Password, AppName
 
 
 def url(domain: str) -> Url:
-    return Url(
-        Protocol('https'),
-        HostNameFromHostGateway(
-            HostGatewayUrl(
-                BillingApiUrl("https://billing-api.vetmanager.cloud/"),
-                Domain(domain)
-            )
+    return UrlFromGateway(
+        HostGatewayUrl(
+            BillingApiUrl("https://billing-api.vetmanager.cloud/"),
+            Domain(domain)
         )
     )
 
