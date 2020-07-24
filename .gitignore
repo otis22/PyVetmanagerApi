@@ -3,6 +3,8 @@ __pycache__/
 *.py[cod]
 *$py.class
 
+Pipfile.lock
+
 tests/__pycache__
 
 # Distribution / packaging
