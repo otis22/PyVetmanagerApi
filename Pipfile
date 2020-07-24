@@ -7,9 +7,12 @@ name = "pypi"
 requests = "*"
 
 [dev-packages]
+flake8 = "*"
+pytest = "*"
+pytest-cov = "*"
 
 [requires]
-python_version = "3.8"
+python_version = ">=3.6"
 
 [scripts]
 check = "bash -c \"flake8 --count --show-source --statistics vetmanager tests && pytest --cov=vetmanager --cov-fail-under 90 tests/\""

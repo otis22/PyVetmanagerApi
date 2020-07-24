@@ -77,7 +77,7 @@ except Exception as e:
 ## Install test requirements 
 
 ```
-pip install flake8 pytest pytest-cov
+pipenv install -d
 ```
 
 ## Run check
@@ -93,4 +93,8 @@ or with pipenv `pipenv run check`
 python setup.py sdist
 twine upload --skip-existing dist/* -r testpypi
 twine upload --skip-existing dist/*
+```
+
+```buildoutcfg
+
 ```
