@@ -28,9 +28,24 @@ jobs:
       run: |
           pip install pipenv
           pipenv install --deploy --dev
-    - name: Code style
+    - name: Check code style
       run: |
         pipenv run style
-    - name: Unit
+    - name: Run unit tests
       run: |
         pipenv run unit
+    - name: Publish package to TestPyPI
+      uses: pypa/gh-action-pypi-publish@master
+      with:
+        skip_existing: true
+        user: __token__
+        password: ${{ secrets.test_pypi_password }}
+        repository_url: https://test.pypi.org/legacy/
+    - name: Publish package to PyPi
+      if: github.event_name == 'push' && startsWith(github.ref, 'refs/tags')
+      uses: pypa/gh-action-pypi-publish@master
+      with:
+        skip_existing: true
+        user: __token__
+        password: ${{ secrets.pypi_password }}
+        repository_url: https://test.pypi.org/legacy/
