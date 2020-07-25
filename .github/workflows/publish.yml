@@ -7,6 +7,8 @@ name: Publish to PyPi
 on:
   push:
     branches: [ master ]
+    tags:
+      - v*
 jobs:
   build-n-publish:
     name: Build and publish to PyPI and TestPyPI
