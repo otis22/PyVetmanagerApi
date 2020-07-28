@@ -12,7 +12,7 @@ All CRM account has unique domain name, url address can changes:
 * {$domainName}.vetmanager.ru
 * {$domainName}.vetmanager2.ru
 * {$domainName}.ru.vetmanager.cloud
-* git s...
+* {$domainName}.eu.vetmanager.cloud
 
 # Examples
 
