@@ -2,6 +2,7 @@
 
 ![Build Status](https://github.com/otis22/PyVetmanagerApi/workflows/Python%20package/badge.svg)
 ![Publish Status](https://github.com/otis22/PyVetmanagerApi/workflows/Publish%20to%20PyPi/badge.svg)
+[![Run in Postman](https://run.pstmn.io/button.svg)](https://god.postman.co/run-collection/64d692ca1ea129218ccb)
 
 Python library for work with vetmanager api
 
